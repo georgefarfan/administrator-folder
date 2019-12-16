@@ -23,27 +23,35 @@ These components make use of the NativeScript core theme, which styles them with
 The theme also provides a set of helper class names such as p-20, h1, h2, and text-center to enhance styling.
 You can learn more about the NativeScript core theme at https://github.com/nativescript/theme
 -->
-
-<TabView selectedIndex="0" androidTabsPosition="bottom" >
-    <StackLayout *tabItem="{title: 'Novedades', iconSource: 'res://icon'}">
-        <StackLayout>
-            <Label text="Sucursales" textWrap="true" class="m-15 h2 text-left"></Label>
-            <Label text="Eventos" textWrap="true" class="m-15 h2 text-left"></Label>
-            <Label text="Locales" textWrap="true" class="m-15 h2 text-left"></Label>
-            <Label text="Zonas principales" textWrap="true" class="m-15 h2 text-left"></Label>
+<ng-container>
+    <TabView selectedIndex="0" 
+    androidTabsPosition="bottom"
+    selectedTabTextColor="white" 
+    tabBackgroundColor="orangered"
+    tabTextFontSize="16"
+    androidSelectedTabHighlightColor="white">
+        <StackLayout *tabItem="{title: 'Archivos'}">
+            <StackLayout>
+                <Label class="far" style="font-size: 50em; color: #363636" text="&#xf15c;"></Label> 
+            </StackLayout>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Editar'}">
+            <StackLayout>
+                <Label text="Editor" style="color: #363636"></Label> 
+            </StackLayout>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'Favoritos'}">
+            <GridLayout>
+                <ListView [items]="items">
+                    <ng-template let-item="item">
+                        <StackLayout>
+                            <Label class="label" [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
+                        </StackLayout>
+                    </ng-template>
+                </ListView>
+            </GridLayout>
         </StackLayout>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'Informes', iconSource: 'res://icon'}">
-        <GridLayout>
-            <ListView [items]="items">
-                <ng-template let-item="item">
-                    <StackLayout>
-                        <Label class="label" [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
-                    </StackLayout>
-                </ng-template>
-            </ListView>
-        </GridLayout>
-    </StackLayout>
-</TabView>
+    </TabView>
+</ng-container>
 
 
