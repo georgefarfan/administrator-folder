@@ -23,12 +23,27 @@ These components make use of the NativeScript core theme, which styles them with
 The theme also provides a set of helper class names such as p-20, h1, h2, and text-center to enhance styling.
 You can learn more about the NativeScript core theme at https://github.com/nativescript/theme
 -->
-<GridLayout>
-    <ListView [items]="items">
-        <ng-template let-item="item">
-            <StackLayout>
-                <Label class="label" [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
-            </StackLayout>
-        </ng-template>
-    </ListView>
-</GridLayout>
+
+<TabView selectedIndex="0" androidTabsPosition="bottom" >
+    <StackLayout *tabItem="{title: 'Novedades', iconSource: 'res://icon'}">
+        <StackLayout>
+            <Label text="Sucursales" textWrap="true" class="m-15 h2 text-left"></Label>
+            <Label text="Eventos" textWrap="true" class="m-15 h2 text-left"></Label>
+            <Label text="Locales" textWrap="true" class="m-15 h2 text-left"></Label>
+            <Label text="Zonas principales" textWrap="true" class="m-15 h2 text-left"></Label>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Informes', iconSource: 'res://icon'}">
+        <GridLayout>
+            <ListView [items]="items">
+                <ng-template let-item="item">
+                    <StackLayout>
+                        <Label class="label" [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+        </GridLayout>
+    </StackLayout>
+</TabView>
+
+
